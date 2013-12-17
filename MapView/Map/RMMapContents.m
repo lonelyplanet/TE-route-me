@@ -835,7 +835,12 @@
 
 -(float) scaledMetersPerPixel
 {
-    return [mercatorToScreenProjection metersPerPixel] / screenScale;
+    float currScreenScale = (double)([[UIScreen mainScreen] scale] ==
+                                     2.0) ? 0.5 : 1.0;
+    float projMetersPerPixel = (float)[mercatorToScreenProjection
+                                       metersPerPixel];
+    float scaledMetersPerPixel = projMetersPerPixel*(currScreenScale);
+    return scaledMetersPerPixel;
 }
 
 - (void)setScaledMetersPerPixel:(float)newMPP {
