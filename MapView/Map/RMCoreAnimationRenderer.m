@@ -150,6 +150,7 @@
 //		  image.screenLocation.size.width, image.screenLocation.size.height);
 	
 	[[image layer] removeFromSuperlayer];
+    [image layer].delegate = nil;
 }
 
 - (void)setFrame:(CGRect)frame

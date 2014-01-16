@@ -28,10 +28,14 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol RMURLConnectionOperationDelegate;
+@interface RMURLConnectionOperation : NSOperation {
+    id                      _delegate;
+    NSURLConnection         *_connection;
+    NSURLRequest            *_request;
+    BOOL                    _isRunning;
+}
 
-@interface RMURLConnectionOperation : NSOperation
-
-- (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
+-(id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
+-(void)stop;
 
 @end
